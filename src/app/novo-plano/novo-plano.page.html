@@ -1,5 +1,8 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons>
+    <ion-back-button></ion-back-button>
+    </ion-buttons>
     <ion-title>Novo Plano Financeiro</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -11,5 +14,23 @@
         Crie agora um novo planejamento.
       </ion-card-title>
     </ion-card-header>
+    <ion-card-content>
+      <!-- o ngform é para transformar em um form do angular -->
+      <form #form="ngform" (ngsubmit)="calcular(form)">
+        <ion-item>
+          <ion-label position="floating" color="primary">Nome do Plano:</ion-label>
+          <ion-input name="nome"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label position="floating" color="primary">Custo Fixo Mensal:</ion-label>
+            <ion-input name="custoMensal"></ion-input>
+          </ion-item>
+        <ion-item>
+          <ion-label position="floating" color="primary">Faturamento Mensal:</ion-label>
+          <ion-input name="faturamentoMensal"></ion-input>
+        </ion-item>
+        <ion-button type="submit" fill="outline">Calcular</ion-button>
+      </form>
+    </ion-card-content>
   </ion-card>
 </ion-content>

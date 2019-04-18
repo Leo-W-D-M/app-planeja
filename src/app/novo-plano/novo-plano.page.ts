@@ -11,5 +11,14 @@ export class NovoPlanoPage implements OnInit {
 
   ngOnInit() {
   }
+  calcular(form){
+    const nomePlano = form.values.nome
+    const custoMensal = form.values.custoMensal
+    const faturamentoMensal = form.values.faturamentoMensal
+
+    alert("O nome do plano é:" + nomePlano)
+    alert("O custo mensal é:" + custoMensal)
+    alert("O faturamento é:" + faturamentoMensal)
+  }
 
 }
