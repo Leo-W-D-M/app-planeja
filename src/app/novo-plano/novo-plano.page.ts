@@ -7,18 +7,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NovoPlanoPage implements OnInit {
 
+  erro;
+
   constructor() { }
 
   ngOnInit() {
+
   }
+
   calcular(form){
-    const nomePlano = form.values.nome
-    const custoMensal = form.values.custoMensal
-    const faturamentoMensal = form.values.faturamentoMensal
+    const nomePlano = form.value.nome
+    const custoMensal = form.value.custoMensal
+    const faturamentoMensal = form.value.faturamentoMensal
 
-    alert("O nome do plano é:" + nomePlano)
-    alert("O custo mensal é:" + custoMensal)
-    alert("O faturamento é:" + faturamentoMensal)
+    if(parseInt(custoMensal) > parseInt(faturamentoMensal))
+    {
+      this.erro = "Seu custo fixo é maior que seu faturamento mensal."
+    }
+    else
+    {
+      //transforma o form inteiro em string pra guardar no banco de dados do navegador
+      sessionStorage.setItem(nomePlano, JSON.stringify(form.value))
+      this.erro = "Cadastrodo com suscesso!"
+      form.reset()
+    }
+    
+
   }
-
 }

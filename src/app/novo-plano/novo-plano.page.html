@@ -13,21 +13,22 @@
       <ion-card-title>
         Crie agora um novo planejamento.
       </ion-card-title>
+      <p style="color:red">{{erro}}</p>
     </ion-card-header>
     <ion-card-content>
       <!-- o ngform é para transformar em um form do angular -->
-      <form #form="ngform" (ngsubmit)="calcular(form)">
+      <form #form="ngForm" (ngSubmit)="calcular(form)">
         <ion-item>
           <ion-label position="floating" color="primary">Nome do Plano:</ion-label>
-          <ion-input name="nome"></ion-input>
+          <ion-input name="nome" ngModel></ion-input>
         </ion-item>
         <ion-item>
             <ion-label position="floating" color="primary">Custo Fixo Mensal:</ion-label>
-            <ion-input name="custoMensal"></ion-input>
+            <ion-input name="custoMensal" ngModel></ion-input>
           </ion-item>
         <ion-item>
           <ion-label position="floating" color="primary">Faturamento Mensal:</ion-label>
-          <ion-input name="faturamentoMensal"></ion-input>
+          <ion-input name="faturamentoMensal" ngModel></ion-input>
         </ion-item>
         <ion-button type="submit" fill="outline">Calcular</ion-button>
       </form>

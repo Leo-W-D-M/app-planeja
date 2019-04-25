@@ -11,4 +11,16 @@
   <small>O app de plenejamento financeiro pessoal</small>  
   <br/>
   <ion-button size="small" [routerLink]="['/novo-plano']">Criar Plano Financeiro</ion-button>
+  <div>
+    <ion-card>
+      <ion-card-header>
+        <h2>{{plenejamento.nome}}</h2>
+      </ion-card-header>
+      <ion-card-content>
+        <p>{{plenejamento.custoMensal}}</p>
+        <p>{{plenejamento.faturamentoMensal}}</p>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
 </ion-content>
