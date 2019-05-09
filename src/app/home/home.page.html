@@ -1,26 +1,28 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>
-      App Planeja
-    </ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-title>
+            App Planeja
+        </ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-  Bem vindo ao App Planeja <br/>
-  <small>O app de plenejamento financeiro pessoal</small>  
-  <br/>
-  <ion-button size="small" [routerLink]="['/novo-plano']">Criar Plano Financeiro</ion-button>
-  <div>
-    <ion-card>
-      <ion-card-header>
-        <h2>{{plenejamento.nome}}</h2>
-      </ion-card-header>
-      <ion-card-content>
-        <p>{{plenejamento.custoMensal}}</p>
-        <p>{{plenejamento.faturamentoMensal}}</p>
-      </ion-card-content>
-    </ion-card>
-  </div>
-
+    Bem vindo ao App Planeja <br/>
+    <small>O app de plenejamento financeiro pessoal</small>  
+    <br/>
+    <ion-button size="small" [routerLink]="['/novo-plano']">Criar Plano Financeiro</ion-button>
+    <div *ngIf="planejamentos.length == 0">
+        <p>Você não possui nenhum planejamento cadastrado</p>
+    </div>
+    <div *ngFor="let planejamento of planejamentos">
+            <ion-card>
+                <ion-card-header>
+                    <h2>{{planejamento.nome}}</h2>
+                </ion-card-header>
+                <ion-card-content>
+                    <p>{{planejamento.custoMensal}}</p>
+                    <p>{{planejamento.faturamentoMensal}}</p>
+            </ion-card-content>
+          </ion-card>
+        </div>
 </ion-content>
