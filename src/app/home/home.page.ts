@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { listLazyRoutes } from '@angular/compiler/src/aot/lazy_routes';
+import { AlertController } from '@ionic/angular';
+import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 
 @Component({
     selector: 'app-home',
@@ -6,10 +9,12 @@ import { Component } from '@angular/core';
     styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+
+    constructor(private alert:AlertController){}
+
     //variavel é um array
     planejamentos = []
-    //ele é iniciado toda vez que entre na pagina
-    ionViewDidEnter() {
+    listar(){
         //zera o array
         this.planejamentos = []
         //define o tamanho do banco
@@ -22,5 +27,26 @@ export class HomePage {
                 this.planejamentos.push(JSON.parse(planejamento))
             }
         }
+    }
+
+    async exibirAlertaDeExclusao () {
+        const alertTemp = await this.alert.create({
+            header: 'Exclusão de Plano',
+            subHeader: 'Deseja realmente excluir esse plano?',
+            message: ''
+
+        })
+        await alertTemp.present()
+    }
+
+
+    excluir(nome){
+        this.exibirAlertaDeExclusao()
+        // sessionStorage.removeItem(nome)
+        // this.listar()
+    }
+    //ele é iniciado toda vez que entre na pagin
+    ionViewDidEnter() {
+        this.listar()
     }
 }

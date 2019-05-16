@@ -15,14 +15,19 @@
         <p>Você não possui nenhum planejamento cadastrado</p>
     </div>
     <div *ngFor="let planejamento of planejamentos">
-            <ion-card>
-                <ion-card-header>
-                    <h2>{{planejamento.nome}}</h2>
-                </ion-card-header>
-                <ion-card-content>
-                    <p>{{planejamento.custoMensal}}</p>
-                    <p>{{planejamento.faturamentoMensal}}</p>
+        <ion-card>
+            <ion-card-header>
+                <h2>{{planejamento.nome}}</h2>
+            </ion-card-header>
+            <ion-card-content>
+                <p>Custo: {{planejamento.custoMensal}}</p>
+                <p>Faturamento: {{planejamento.faturamentoMensal}}</p>
+                <div style="display: flex; justify-content:flex-end;">
+                    <ion-button (click)="excluir(planejamento.nome)" color="danger" size="small" fill="outline">
+                        Excluir
+                    </ion-button>
+                </div>
             </ion-card-content>
-          </ion-card>
-        </div>
+        </ion-card>
+    </div>
 </ion-content>
